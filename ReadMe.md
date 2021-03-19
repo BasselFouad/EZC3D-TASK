@@ -1,4 +1,4 @@
-**Assignment for Full Stack developer.**
+## Assignment for Full Stack developer
 
 _Background:_     
       
