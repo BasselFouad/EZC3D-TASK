@@ -14,12 +14,12 @@ As first step, the team re-compiled a minimal Wasm and JS versions of EZC3D usin
 
 _Your assignment:_    
      
-Implement a skeleton Electron and Angular application that can be used to validate the viability of working with C3D files from Typescript. Specifically, such application should: 
-•	Prompt the user an action trigger to select a c3d file, from the filesystem of the local machine 
-•	Pass the c3d path to the readC3D(path) function of the provide Wasm library  
-•	Expect a serialized json as reply as … 
-•	Presents resulting fields to the user, to show highlights of the content in a human readable format and intuitive visualization 
+Implement a skeleton Electron and Angular application that can be used to validate the viability of working with C3D files from Typescript. Specifically, such application should:    
+* Prompt the user an action trigger to select a c3d file, from the filesystem of the local machine    
+* Pass the c3d path to the readC3D(path) function of the provide Wasm library     
+* Expect a serialized json as reply as …    
+* Presents resulting fields to the user, to show highlights of the content in a human readable format and intuitive visualization    
 
 _Bonus:_      
     
-•	Recompile EZC3D with this additional functionality …  
+* Recompile EZC3D with this additional functionality …  
