@@ -21,12 +21,4 @@ Implement a skeleton Electron and Angular application that can be used to valida
 •	Presents resulting fields to the user, to show highlights of the content in a human readable format and intuitive visualization 
 
 _Bonus: _      
-•	Recompile EZC3D with this additional functionality … 
-
-
-
-
-
-
-
-![image](https://user-images.githubusercontent.com/32517490/111849001-e2a4dc00-890c-11eb-8ea3-cf164405d8c7.png)
+•	Recompile EZC3D with this additional functionality …  
