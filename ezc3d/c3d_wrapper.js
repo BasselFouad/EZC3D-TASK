@@ -1696,7 +1696,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  5823: function() {FS.mkdir('/temp'); FS.mount(NODEFS, {root : './tmp'}, '/temp');}
+  5994: function() {FS.mkdir('/temp'); FS.mount(NODEFS, {root : '/Users/ignazioa/Documents/tmp'}, '/temp');}
 };
 
 
@@ -5557,7 +5557,10 @@ var ___wasm_call_ctors = Module["___wasm_call_ctors"] = createExportWrapper("__w
 var _fflush = Module["_fflush"] = createExportWrapper("fflush");
 
 /** @type {function(...*):?} */
-var _testFunction = Module["_testFunction"] = createExportWrapper("testFunction");
+var _testReadWriteC3d = Module["_testReadWriteC3d"] = createExportWrapper("testReadWriteC3d");
+
+/** @type {function(...*):?} */
+var _testReadC3d = Module["_testReadC3d"] = createExportWrapper("testReadC3d");
 
 /** @type {function(...*):?} */
 var _testMessage = Module["_testMessage"] = createExportWrapper("testMessage");

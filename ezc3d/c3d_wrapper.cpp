@@ -88,10 +88,10 @@ int readWriteC3d()
     return 0;
 }
 
-int readC3d()
+int readC3d(char* path)
 {
     // Read an existing c3d file
-    ezc3d::c3d c3d("/temp/Vicon.c3d");
+    ezc3d::c3d c3d(path);
 
     // Add two new points to the c3d (one filled with zeros, the other one with data)
     c3d.point("new_point1"); // Add empty
@@ -112,41 +112,10 @@ int readC3d()
     return 0;
 }
 
-inline const char* cstr(const std::string& message) {
-    char * cstr = new char [message.length()+1];
-    std::strcpy (cstr, message.c_str());
-    return cstr;
-}
-
-std::string vectorToString(std::vector<float> &data) {
-    std::string dataStr = "[";
-    for(int i=0; i < data.size(); i++){
-        dataStr += std::to_string(data[i]);
-        if (i <  (data.size() - 1))
-           dataStr += ",";
-    }
-    dataStr += "]";
-    return dataStr;
-}
-
-std::string getJsonObj() {
-    std::vector<float>data({1.432, 1, 2, 3, 5, 8});
-    std::string dataStr = vectorToString(data);
-    std::string str = "{ \"id\": 123232, \"data\":" + dataStr + "}";
-    return str;
-}
-
 void createC3d()
 {
     // Create an empty fresh c3d
     try { 
-
-        // write something locally with node
-        EM_ASM(
-            FS.mkdir('/temp');                         // (1)
-            FS.mount(NODEFS, {root : './test'}, '/temp'); // (2)
-        );
-
         ezc3d::c3d c3d_empty;
 
         ezc3d::ParametersNS::GroupNS::Parameter t("SCALE");
@@ -206,25 +175,62 @@ void createC3d()
     }
 }
 
+inline const char* cstr(const std::string& message) {
+    char * cstr = new char [message.length()+1];
+    std::strcpy (cstr, message.c_str());
+    return cstr;
+}
+
+std::string vectorToString(std::vector<float> &data) {
+    std::string dataStr = "[";
+    for(int i=0; i < data.size(); i++){
+        dataStr += std::to_string(data[i]);
+        if (i <  (data.size() - 1))
+           dataStr += ",";
+    }
+    dataStr += "]";
+    return dataStr;
+}
+
+std::string getJsonObj() {
+    std::vector<float>data({1.432, 1, 2, 3, 5, 8, 1.432, 1, 2, 3, 5, 8, 1.432, 1, 2, 3, 5, 8 });
+    std::string dataStr = vectorToString(data);
+    std::string str = "[{ \"label\": \"POINTS\", \"X\":" + dataStr + ", \"Y\":" + dataStr + ", \"Z\":" + dataStr + "}, \
+                        { \"label\": \"ANALOG\", \"X\":" + dataStr + ", \"Y\":" + dataStr + ", \"Z\":" + dataStr + "}, \
+                        { \"label\": \"FORCE\", \"X\":" + dataStr + ", \"Y\":" + dataStr + ", \"Z\":" + dataStr + "} ]";
+    return str;
+}
+
 extern "C" {
 
 EMSCRIPTEN_KEEPALIVE
-const char* testFunction() { 
+const char* testReadWriteC3d() { 
     EM_ASM(
         FS.mkdir('/temp'); // (1)
         FS.mount(NODEFS, {root : '/Users/ignazioa/Documents/tmp'}, '/temp'); // (2)
      );
 
     readWriteC3d();
+    return "";
+}
+
+EMSCRIPTEN_KEEPALIVE
+const char* testReadC3d(char* path) { 
+    EM_ASM(
+        FS.mkdir('/temp'); // (1)
+        FS.mount(NODEFS, {root : '/Users/ignazioa/Documents/tmp'}, '/temp'); // (2)
+     );
+
+    readC3d(path);
 
     std::string json = getJsonObj();
     return cstr(json);
 }
 
 EMSCRIPTEN_KEEPALIVE
-const char* testMessage() { 
+const char* testMessage(const char* path) { 
     std::string json = getJsonObj();
-    return cstr(json);
+    return path;
 }
 
 }
