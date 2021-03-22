@@ -17,9 +17,9 @@ _Your assignment:_
 Implement a skeleton Electron and Angular application that can be used to validate the viability of working with C3D files from Typescript. Specifically, such application should:    
 * Prompt the user an action trigger to select a c3d file, from the filesystem of the local machine    
 * Pass the c3d path to the readC3D(path) function of the provide Wasm library     
-* Expect a serialized json as reply as …    
-* Presents resulting fields to the user, to show highlights of the content in a human readable format and intuitive visualization    
+* Expect a serialized json as reply (as showed by the c3d_wrapper.cpp testMessage function)        
+* Presents resulting fields to the user, to show highlights of the content in a human readable format and intuitive visualization      
 
 _Bonus:_      
-    
-* Recompile EZC3D with this additional functionality …  
+ 
+* Recompile EZC3D to actually implement the readC3d functionalitiy to return the "3D kinematics" contained in the example Vicon.c3d.  
