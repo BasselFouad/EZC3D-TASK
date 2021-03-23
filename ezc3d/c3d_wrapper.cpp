@@ -6,10 +6,10 @@
 #include "Data.h"
 #include "Parameters.h"
 
-int readWriteC3d()
+int readWriteC3d(std::string path)
 {
     // Read an existing c3d file
-    ezc3d::c3d c3d("/temp/Vicon.c3d");
+    ezc3d::c3d c3d(path);
 
     // Add two new points to the c3d (one filled with zeros, the other one with data)
     c3d.point("new_point1"); // Add empty
@@ -88,10 +88,10 @@ int readWriteC3d()
     return 0;
 }
 
-int readC3d(char* path)
+int readC3d(std::string fullpath)
 {
     // Read an existing c3d file
-    ezc3d::c3d c3d(path);
+    ezc3d::c3d c3d(fullpath);
 
     // Add two new points to the c3d (one filled with zeros, the other one with data)
     c3d.point("new_point1"); // Add empty
@@ -204,24 +204,26 @@ std::string getJsonObj() {
 extern "C" {
 
 EMSCRIPTEN_KEEPALIVE
-const char* testReadWriteC3d() { 
+const char* testReadWriteC3d(char* filename) { 
     EM_ASM(
-        FS.mkdir('/temp'); // (1)
-        FS.mount(NODEFS, {root : '/Users/ignazioa/Documents/tmp'}, '/temp'); // (2)
+        //ATTENTION: this code expects to find a variable named 'dir' which contains filename
+        FS.mkdir('/temp'); 
+        FS.mount(NODEFS, {root : dir}, '/temp'); 
      );
 
-    readWriteC3d();
+    readWriteC3d(std::string("/temp/") + std::string(filename));
     return "";
 }
 
 EMSCRIPTEN_KEEPALIVE
-const char* testReadC3d(char* path) { 
+const char* testReadC3d(char* filename) { 
     EM_ASM(
-        FS.mkdir('/temp'); // (1)
-        FS.mount(NODEFS, {root : '/Users/ignazioa/Documents/tmp'}, '/temp'); // (2)
+        //ATTENTION: this code expects to find a variable named 'dir' which contains filename
+        FS.mkdir('/temp'); 
+        FS.mount(NODEFS, {root : dir}, '/temp'); 
      );
 
-    readC3d(path);
+    readC3d(std::string("/temp/") + std::string(filename));
 
     std::string json = getJsonObj();
     return cstr(json);

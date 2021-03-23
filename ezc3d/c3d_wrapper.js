@@ -1696,7 +1696,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  5994: function() {FS.mkdir('/temp'); FS.mount(NODEFS, {root : '/Users/ignazioa/Documents/tmp'}, '/temp');}
+  5978: function() {FS.mkdir('/temp'); FS.mount(NODEFS, {root : dir}, '/temp');}
 };
 
 
