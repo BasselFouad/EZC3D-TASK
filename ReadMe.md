@@ -29,4 +29,4 @@ _Note and tips:_
 * Be aware that the library requires access to file system using node module (https://nodejs.org/api/fs.html)   
 * ```testEzC3dWasm.js```
  is provided to show a possible basic interaction with the library and its wrapper.  
-For example try calling from ```node testEzC3dWasm.js``` to get started with testing   
+For example try calling  ```node testEzC3dWasm.js``` to get started with testing.    
