@@ -22,4 +22,11 @@ Implement a skeleton Electron and Angular application that can be used to valida
 
 _Bonus:_      
  
-* Recompile EZC3D to actually implement the readC3d functionalitiy to return the "3D kinematics" contained in the example Vicon.c3d.  
+* Recompile EZC3D to actually implement the readC3d functionalitiy to return the "3D kinematics" contained in the example Vicon.c3d.    
+
+
+_Note and tips:_   
+* Be aware that the library requires access to file system using node module (https://nodejs.org/api/fs.html)   
+* ```testEzC3dWasm.js```
+ is provided to show a possible basic interaction with the library and its wrapper.  
+For example try calling from ```node testEzC3dWasm.js``` to get started with testing   
