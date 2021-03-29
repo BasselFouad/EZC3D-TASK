@@ -21,7 +21,7 @@ Implement a skeleton Electron and Angular application that can be used to valida
 * Presents resulting fields to the user, to show highlights of the content in a human readable format and intuitive visualization      
 
 _Bonus:_      
- 
+* Propose c3d_wrapper.cpp modification to avoid use of globabl variable dir.     
 * Recompile EZC3D to actually implement the readC3d functionalitiy to return the "3D kinematics" contained in the example Vicon.c3d.    
 
 
