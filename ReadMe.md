@@ -29,4 +29,5 @@ _Note and tips:_
 * Be aware that the library requires access to file system using node module (https://nodejs.org/api/fs.html)   
 * ```testEzC3dWasm.js```
  is provided to show a possible basic interaction with the library and its wrapper. Try calling  ```node testEzC3dWasm.js``` to get started with testing.    
-* Be aware that ```testReadC3d(filename)``` uses the global variable 'dir' to concatenate the fullpath of the provided filename.  
+* Be aware that ```testReadC3d(filename)``` uses the global variable 'dir' to concatenate the fullpath of the provided filename.
+* You are free – and encouraged – to adopt any best practices related to software development, used frameworks/libraries and tooling you know
