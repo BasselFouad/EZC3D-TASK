@@ -213,6 +213,7 @@ readBinary = function readBinary(filename) {
   if (!ret.buffer) {
     ret = new Uint8Array(ret);
   }
+  console.log(ret)
   assert(ret.buffer);
   return ret;
 };
